@@ -49,11 +49,15 @@ The main controller for the system is the NodeMCU Development Board, which is ba
 
 * Pin Configuration: The module runs at 3.3V logic levels. It connects with the sensors using different communication protocols; SPI for the RFID reader and SoftwareSerial (UART) for the fingerprint sensor.  
 
+<img width="1000" height="1000" alt="image" src="https://github.com/user-attachments/assets/d3a01cea-db2e-4c4e-9c88-f348f6a1eaff" />
 
 2)	Biometric Acquisition Module: R307s Optical Sensor  
 The main layer of security comes from the R307s Optical Fingerprint Sensor, which combines an optical scanner with a high-performance Digital Signal Processor (DSP).
 
 * Working Principle: The sensor uses a dark background optical method. When a finger is placed on the collection window, an internal high-intensity LED lights up the ridges and valleys of the fingerprint. A high-resolution CMOS camera captures this illuminated image. The onboard DSP processes the image to find unique "minutiae points" (ridge bifurcations and endings) and creates a mathematical template saved in its internal flash memory [1], [9].
+
+<img width="1000" height="1000" alt="image" src="https://github.com/user-attachments/assets/99b5caf9-5916-41ea-b030-d4176dd1dc86" />
+
 
 3)	RFID Identification Module: MFRC522  
 RFID As a reliable backup system, the setup includes the RFID, a compact reader/writer module for contactless communication at 13.56 MHz.
@@ -61,6 +65,8 @@ RFID As a reliable backup system, the setup includes the RFID, a compact reader/
 * Working Principle: The module creates a continuous electromagnetic field. When a passive RFID tag (student ID card) enters this field, the tag's internal antenna captures energy through electromagnetic induction [7]. The tag then modifies the field to send back its Unique Identifier (UID) to the reader [8].
 
 * SPI Communication Protocol: Unlike the fingerprint sensor, the RFID reader needs fast data transfer and uses the SPI (Serial Peripheral Interface) bus. The microcontroller serves as the Master and the RFID as the Slave.
+
+<img width="1000" height="1000" alt="image" src="https://github.com/user-attachments/assets/f048560b-a42d-4f1d-8222-231903341fa2" />
 
 4)	Visual Feedback Interface: 16x2 Liquid Crystal Display (LCD)
 To ensure clear communication with the user, the system uses a 16x2 Character LCD (Liquid Crystal Display) instead of the smaller OLED screens found in earlier versions. 
@@ -71,8 +77,12 @@ To ensure clear communication with the user, the system uses a 16x2 Character LC
 
 * Backlight: It features a controllable LED backlight, which provides visibility in low-light classroom environments.
 
+<img width="910" height="852" alt="image" src="https://github.com/user-attachments/assets/c8517c92-4a25-4c73-b516-e6a59da3a67c" />
+
 5)	Energy Storage:3S Lithium-ion Battery pack
 For operational portability, the system runs on a custom 3S (3-Series) 18650 Lithium-ion battery pack. Capacity & Voltage: This pack includes three 18650 cells connected in series, offering a nominal voltage of 11.1V, which can reach up to 12.6V when fully charged. Why 12V? This higher voltage ensures stable operation for the voltage regulators and enables the device to run for longer periods compared to a single-cell 3.7V setup.
+
+<img width="500" height="406" alt="image" src="https://github.com/user-attachments/assets/deb7b5b4-329c-4614-8408-4c6645dc00f3" />
 
 6)	Power Regulation: LM2596S Buck Convertor
 Since the system now runs on a higher voltage 3S battery pack (approximately 12V), we need to lower the voltage to safe levels (5V or 3.3V) for the microcontroller and sensors.
@@ -80,6 +90,8 @@ Since the system now runs on a higher voltage 3S battery pack (approximately 12V
 * Problem: Connecting the 12V battery directly to the microcontroller would immediately damage the components. Linear regulators, like the 7805, are inefficient. They waste extra voltage as heat, which can be dangerous in a portable case. Solution: The system uses the LM2596S Step-Down (Buck) Converter. 
 
 * Efficiency: Unlike linear regulators, the LM2596S switches power on and off thousands of times each second to reduce voltage. This method achieves up to 92% efficiency, which greatly cuts down heat production and increases battery life. Stability: It delivers a stable 5V output, no matter how the battery voltage changes, ensuring the sensors work correctly.
+  
+<img width="800" height="800" alt="image" src="https://github.com/user-attachments/assets/31c89674-95e9-467a-9b2a-447385577e4c" />
 
 ## Cloud-Integrated Interface Demonstration
 
